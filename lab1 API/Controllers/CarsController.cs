@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 using System.Net;
 using System.Reflection;
 
-
 namespace lab1_API.Controllers;
 
 [Route("api/[controller]")]
