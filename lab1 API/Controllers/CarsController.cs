@@ -12,6 +12,7 @@ namespace lab1_API.Controllers;
 [ApiController]
 public class CarsController : ControllerBase
 {
+    public static int _requestCounter = 0;
     private readonly ILogger<CarsController> _logger;
     public CarsController(ILogger<CarsController> logger)
     {
@@ -111,6 +112,11 @@ public class CarsController : ControllerBase
         return NoContent();
     }
 
-    //////////////////////////////////////////////////////////////////////////////////////
-    
+    ////////////////////////////////////////count//////////////////////////////////////////////
+    [HttpGet]
+    [Route("requestCounter")]
+    public int GetRequestCounter()
+    {
+        return RequestCounterMiddleware.Counter;
+    }
 }

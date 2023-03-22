@@ -26,6 +26,12 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.Use(async (context, next) =>
+{
+    RequestCounterMiddleware.Counter++;
+
+    await next(context);
+});
 
 app.Use(async (context, next) =>
 {
