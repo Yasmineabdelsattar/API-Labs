@@ -1,6 +1,7 @@
 ﻿using lab2_abi.DAL.Context;
 using lab2_abi.DAL.Models;
 using lab2_abi.DAL.Repos.GenericRepo;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,14 @@ public class DepartmentsRepo: GenericRepo<Department>, IDepartmentsRepo
     public DepartmentsRepo(TicketContext context) : base(context)
     {
         _context = context;
+    }
+
+    public Department? GetByIdWithTickets(int id)
+    {
+        return _context.Departments
+            .Include(d => d.Tickets)
+                .ThenInclude(p => p.Developers)
+            .FirstOrDefault(d => d.Id == id);
     }
 
     public List<Department> GetDepartmentsByName(string name)

@@ -11,5 +11,6 @@ namespace lab2_abi.DAL.Repos.DepartmentsRepo;
 
 public interface IDepartmentsRepo: IGenericRepo<Department>
 {
+    Department? GetByIdWithTickets(int id);
     List<Department> GetDepartmentsByName(string name);
 }

@@ -1,6 +1,8 @@
-﻿using lab2_abi.BL.Dtos.Tickets;
+﻿using lab2_abi.BL.Dtos.Departments;
+using lab2_abi.BL.Dtos.Tickets;
 using lab2_abi.DAL.Models;
 using lab2_abi.DAL.Repos.TicketsRepo;
+using lab2_abi.DAL.UnitOfWork;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +20,7 @@ public class TicketsManager: ITicketsManager
     {
         _ticketsRepo = ticketsRepo;
     }
+
 
     public List<TicketReadDto> GetAll()
     {
@@ -44,5 +47,7 @@ public class TicketsManager: ITicketsManager
 
         _ticketsRepo.Add(ticket);
         _ticketsRepo.SaveChanges();
+
+       
     }
 }

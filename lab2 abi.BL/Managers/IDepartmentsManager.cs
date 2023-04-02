@@ -1,5 +1,4 @@
 ﻿using lab2_abi.BL.Dtos.Departments;
-using lab2_abi.BL.Dtos.Tickets;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace lab2_abi.BL.Managers;
 
-public interface ITicketsManager
+public interface IDepartmentsManager
 {
-    List<TicketReadDto> GetAll();
-    void Add(TicketAddDto ticket);
+    List<DepartmentReadDto> GetAll();
+    int Add(DepartmentAddDto department);
+    DepartmentWithTicketsReadDto? GetByIdWithTickets(int id);
 }
